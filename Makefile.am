@@ -265,7 +265,8 @@ dist_amsynth_lv2_DATA = \
 	data/amsynth.lv2/BriansBank17.amSynth.bank.ttl \
 	data/amsynth.lv2/BriansBank18.amSynth.bank.ttl \
 	data/amsynth.lv2/BriansBank19.amSynth.bank.ttl \
-	data/amsynth.lv2/BriansBank20.amSynth.bank.ttl
+	data/amsynth.lv2/BriansBank20.amSynth.bank.ttl \
+	data/amsynth.lv2/modgui.ttl
 
 endif
 
@@ -410,6 +411,13 @@ if BUILD_VST
 	$(INSTALL_PROGRAM_ENV) $(INSTALL) -d $(DESTDIR)$(vstdir)
 	$(INSTALL_PROGRAM_ENV) $(LIBTOOL) --mode=install $(INSTALL) \
 		$(top_builddir)/.libs/amsynth_vst.so $(DESTDIR)$(vstdir)/amsynth_vst.so
+endif
+
+install-data-local:
+	@$(NORMAL_INSTALL)
+if BUILD_LV2
+	$(MKDIR_P) $(DESTDIR)$(amsynth_lv2dir)
+	cp -rf data/amsynth.lv2/modgui $(DESTDIR)$(amsynth_lv2dir)
 endif
 
 
