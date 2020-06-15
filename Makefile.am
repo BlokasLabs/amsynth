@@ -298,6 +298,8 @@ endif
 
 dist_pkgdata_DATA = data/rc
 
+EXTRA_DIST =
+if BUILD_GUI
 EXTRA_DIST = data/icons/48x48/amsynth.png data/icons/scalable/amsynth.svg
 
 appicon48dir=$(datadir)/icons/hicolor/48x48/apps
@@ -309,6 +311,7 @@ appiconsvg_DATA=data/icons/scalable/amsynth.svg
 desktopdir = $(datadir)/applications
 desktop_in_files = data/amsynth.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+endif
 
 appdatadir = $(datadir)/appdata
 appdata_in_files = data/amsynth.appdata.xml.in
@@ -322,6 +325,7 @@ EXTRA_DIST += $(appdata_in_files)
 
 DISTCLEANFILES = $(appdata_DATA)
 
+if BUILD_GUI
 skinsdefaultdir="${pkgdatadir}/skins/default"
 dist_skinsdefault_DATA = \
 	data/skins/default/background.png \
@@ -344,6 +348,7 @@ dist_skinsdefault_DATA = \
 	data/skins/default/slider_boost_2.png \
 	data/skins/default/waveform_lfo.png \
 	data/skins/default/waveform_pics.png
+endif
 
 banksdir = $(pkgdatadir)/banks
 dist_banks_DATA = \
@@ -368,7 +373,6 @@ dist_banks_DATA = \
 	data/banks/BriansBank18.amSynth.bank \
 	data/banks/BriansBank19.amSynth.bank \
 	data/banks/BriansBank20.amSynth.bank
-
 
 #
 # Man pages
